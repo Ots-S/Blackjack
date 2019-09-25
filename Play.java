@@ -6,6 +6,7 @@ class Play {
     public static int joueur1Carte1Chiffre;
     // public static String joueur1Carte1Nom;
     public static String carteJoueur1;
+    public static int totalCroupier;
 
     public static int getRandomIntegerBetweenRange(int min, int max) {
         int x = (int) (Math.random() * ((max - min) + 1)) + min;
@@ -39,7 +40,13 @@ class Play {
                 }
             }
         } else {
-
+            if (joueur1Carte1Chiffre == 1) {
+                 if (totalCroupier + 11 >= 17 && totalCroupier + 11 <= 21) {
+                     joueur1Carte1Chiffre = 11;
+                 } else {
+                     joueur1Carte1Chiffre = 1;
+                 }
+            }
         }
         return joueur1Carte1Chiffre;
 
@@ -91,12 +98,14 @@ class Play {
         System.out.println("Carte 1 croupier = " + carte1Croupier);
         System.out.println("Carte 2 croupier = " + "carte cachée");
 
-        int totalCroupier = carte1Croupier + carte2Croupier;
+         totalCroupier = carte1Croupier + carte2Croupier;
         System.out.println("total visible Croupier = " + carte1Croupier);
+     
+        
         int carte;
 
         while (total < 21 && totalCroupier < 21) {
-
+        //joueur
             System.out.println("Voulez-vous une autre carte ?");
             System.out.println("oui ou non");
             String reponse = myObj.nextLine();
@@ -108,12 +117,24 @@ class Play {
                 System.out.println("total Joueur = " + total);
 
             } else {
+                int carteCroupier;
                 System.out.println("Le croupier retourne sa deuxième carte : " + carte2Croupier);
+                System.out.println("total Croupier = " + totalCroupier);
+                while (totalCroupier <= 16) {
+                    carteCroupier = distributionNumberCarte("Croupier");
+                    System.out.println("nouvelle carte Croupier :" + carteCroupier);
+                    totalCroupier = totalCroupier + carteCroupier;
+
+                }
+
+                
                 System.out.println("total Croupier = " + totalCroupier);
                 System.out.println(compare(total, totalCroupier));
                 return;
             }
-
+        //croupier
+             
+        
         }
         System.out.println(compare(total, totalCroupier));
 
