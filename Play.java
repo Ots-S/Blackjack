@@ -31,7 +31,7 @@ class Play {
 
             if (joueur1Carte1Chiffre == 1) {
                 Scanner myObj1 = new Scanner(System.in);
-                System.out.println("vous avez piocher un as: quelle valeur vous voulez lui donner: 1 ou 11");
+                System.out.println("You draw a ace: choose his value : 1 or 11");
                 String reponse1 = myObj1.nextLine();
                 if (reponse1.equals("1")) {
                     joueur1Carte1Chiffre = 1;
@@ -82,9 +82,9 @@ class Play {
         System.out.println("Welcome " + userName + ", nice to see you !"); // Output user input
 
         int carte1Joueur = distributionNumberCarte("Joueur");
-        int carte2Joueur = distributionNumberCarte("Joueur");
-
         System.out.println(userName + ", Your first card is " + carte1Joueur + ".");
+
+        int carte2Joueur = distributionNumberCarte("Joueur");        
         System.out.println(userName + ", Your second card is " + carte2Joueur+ ".");
 
         int total = carte1Joueur + carte2Joueur;
